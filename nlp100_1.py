@@ -67,9 +67,47 @@ def nlp100_04():
     print(dic)
 
 
+def n_gram(n, ss):
+    """
+    :param n: words
+    :param ss: strings
+    :return: n-gram list
+    """
+    return [ss[i:i + n:1] for i in range(0, len(ss) - n + 1)]
+
+
+def nlp100_05():
+    """
+    05. n-gram
+    与えられたシーケンス（文字列やリストなど）からn-gramを作る関数を作成せよ．この関数を用い，"I am an NLPer"という文から単語bi-gram，文字bi-gramを得よ．
+    :return:
+    """
+    ss = "I am an NLPer"
+    print(n_gram(2, ss))
+    print(n_gram(2, ss.split(" ")))
+
+
+def nlp100_06():
+    """
+    06. 集合"paraparaparadise"と"paragraph"に含まれる文字bi-gramの集合を，それぞれ, XとYとして求め，
+    XとYの和集合，積集合，差集合を求めよ．さらに，'se'というbi-gramがXおよびYに含まれるかどうかを調べよ．
+    """
+    x = set(n_gram(2, "paraparaparadise"))
+    y = set(n_gram(2, "paragraph"))
+    print(x)
+    print(y)
+    print(x | y)
+    print(x - y)
+    print(x & y)
+    print("se" in x)
+    print("se" in y)
+
+
 if __name__ == '__main__':
     nlp100_00()
     nlp100_01()
     nlp100_02()
     nlp100_03()
     nlp100_04()
+    nlp100_05()
+    nlp100_06()
